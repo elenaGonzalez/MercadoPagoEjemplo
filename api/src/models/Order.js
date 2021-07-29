@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
 
     sequelize.define('order', {
         status:{  
-            type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
+            type: DataTypes.ENUM('carrito','created', 'processing', 'cancelled', 'completed'),
             allowNull: false
         },
         payment_id:{

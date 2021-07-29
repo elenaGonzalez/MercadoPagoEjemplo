@@ -14,25 +14,15 @@ export default function Comprar({ productos, data }){
  // script.setAttributeNode(attr_nonce)
 console.log(data)
   document.getElementById('form1').appendChild(script)
-  return () =>{
+  /*return () =>{
     document.getElementById('form1').removeChild(script);
-  }
- },[])
-    return(
-        <div>
+  }*/
+ },[data])
+return(
+  <div>
 
   <form id='form1'>
 
-        <h4>Listado de Compras</h4>
-        <ul>
-        {productos.map((producto, i) => {
-            return(
-              
-                <li key={i}>{producto.title} - {producto.price} - {producto.quantity}</li>   
-                  
-            )
-        })} </ul>  
-        
       </form>
 
      </div>

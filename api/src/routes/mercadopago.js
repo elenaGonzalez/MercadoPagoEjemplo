@@ -13,7 +13,6 @@ server.get("/", (req, res, next)=>{
   //const id_orden = req.query.id 
 
   const id_orden= 1
-
   // cargamos el carrido de la bd
   const carrito = [
     {title: "Producto 1", quantity: 5, price: 10.52},
