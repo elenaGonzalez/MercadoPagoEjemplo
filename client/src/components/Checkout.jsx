@@ -5,7 +5,7 @@ import './Checkout.css'
 
 export default function Checkout() {
   const [datos, setDatos] = useState("")
-  const BASE_BACK = process.env.NODE_BASE_BACK ? process.env.NODE_BASE_BACK : 'http://localhost:3001' 
+  const REACT_APP_API = process.env.REACT_APP_API ? process.env.REACT_APP_API : 'http://localhost:3001' 
   useEffect(()=>{
     axios
     .get(`${BASE_BACK}/mercadopago`)
