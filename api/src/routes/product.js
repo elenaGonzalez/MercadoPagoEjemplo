@@ -21,7 +21,7 @@ server.post('/', (req, res, next) => {
 });
 
 //Ruta que me trae todos los productos existentes
-server.get('/products', (req, res, next) => {
+server.get('/', (req, res, next) => {
     Product.findAll()
     .then(products => {
         res.status(200).send(products);

@@ -7,10 +7,15 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/mercadopagoexample`, {
+const DATABASE_URL = process.env.DATABASE_URL
+  ? process.env.DATABASE_URL
+  : `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/mercadopagoexample`
+
+const sequelize = new Sequelize(DATABASE_URL, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -31,15 +36,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const {Product, Order, Order_detail, User } = sequelize.models;
+const { Product, Order, Order_detail, User } = sequelize.models;
 
 // Aca vendrian las relaciones
 
-User.hasMany(Order) 
+User.hasMany(Order)
 Order.belongsTo(User)
 
-Order.hasMany(Order_detail) 
-Product.hasMany(Order_detail) 
+Order.hasMany(Order_detail)
+Product.hasMany(Order_detail)
 Order_detail.belongsTo(Product)
 
 

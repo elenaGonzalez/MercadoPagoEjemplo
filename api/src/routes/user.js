@@ -26,6 +26,12 @@ server.post('/', (req, res, next) => {
     })
 })
 
+server.get("/", (req,res, next)=>{
+    User.findAll()
+    .then(users =>{
+        res.json(users)
+    }).catch(e => console.log(e))
+})
 
 
 module.exports = server;

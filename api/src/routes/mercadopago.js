@@ -4,6 +4,9 @@ const {
     PROD_ACCESS_TOKEN,
   } = process.env;
 
+const BASE_URL = process.env.NODE_BASE_URL ? process.env.NODE_BASE_URL : 'http://localhost:3000' 
+const BASE_BACK = process.env.NODE_BASE_BACK ? process.env.NODE_BASE_BACK : 'http://localhost:3001' 
+
 const server = require('express').Router();
   // SDK de Mercado Pago
 const mercadopago = require ('mercadopago');
@@ -36,9 +39,9 @@ mercadopago.configure({
     items: items_ml,
     external_reference : `${id_orden}`, //`${new Date().valueOf()}`,
     back_urls: {
-      success: 'http://localhost:3001/mercadopago/pagos',
-      failure: 'http://localhost:3001/mercadopago/pagos',
-      pending: 'http://localhost:3001/mercadopago/pagos',
+      success: `${BASE_BACK}/mercadopago/pagos`,
+      failure: `${BASE_BACK}/mercadopago/pagos`,
+      pending: `${BASE_BACK}/mercadopago/pagos`,
     }
   };
   console.info('preference:', preference)
@@ -96,14 +99,14 @@ server.get("/pagos", (req, res)=>{
     .then((_) => {
       console.info('redirect success')
       
-      return res.redirect("http://localhost:3000")
+      return res.redirect(`${BASE_URL}`)
     }).catch((err) =>{
       console.error('error al salvar', err)
-      return res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`)
+      return res.redirect(`${BASE_URL}/?error=${err}&where=al+salvar`)
     })
   }).catch(err =>{
     console.error('error al buscar', err)
-    return res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
+    return res.redirect(`${BASE_URL}/?error=${err}&where=al+buscar`)
   })
 
 

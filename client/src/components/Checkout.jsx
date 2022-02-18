@@ -5,10 +5,10 @@ import './Checkout.css'
 
 export default function Checkout() {
   const [datos, setDatos] = useState("")
-
+  const BASE_BACK = process.env.NODE_BASE_BACK ? process.env.NODE_BASE_BACK : 'http://localhost:3001' 
   useEffect(()=>{
     axios
-    .get("http://localhost:3001/mercadopago")
+    .get(`${BASE_BACK}/mercadopago`)
     .then((data)=>{
       setDatos(data.data)
       console.info('Contenido de data:', data)
