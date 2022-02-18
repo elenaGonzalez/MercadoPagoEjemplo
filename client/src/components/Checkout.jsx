@@ -8,7 +8,7 @@ export default function Checkout() {
   const REACT_APP_API = process.env.REACT_APP_API ? process.env.REACT_APP_API : 'http://localhost:3001' 
   useEffect(()=>{
     axios
-    .get(`${BASE_BACK}/mercadopago`)
+    .get(`${REACT_APP_API}/mercadopago`)
     .then((data)=>{
       setDatos(data.data)
       console.info('Contenido de data:', data)
