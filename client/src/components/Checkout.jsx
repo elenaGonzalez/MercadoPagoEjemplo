@@ -5,10 +5,10 @@ import './Checkout.css'
 
 export default function Checkout() {
   const [datos, setDatos] = useState("")
-  const REACT_APP_API = process.env.REACT_APP_API ? process.env.REACT_APP_API : 'http://localhost:3001' 
+  
   useEffect(()=>{
     axios
-    .get(`${REACT_APP_API}/mercadopago`)
+    .get(`/mercadopago`)
     .then((data)=>{
       setDatos(data.data)
       console.info('Contenido de data:', data)
