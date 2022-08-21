@@ -4,6 +4,8 @@ import Direccion from './components/Direccion'
 import Nav from './components/Nav'
 import Home from './components/Home'
 
+import PruebaComponente from './components/PruebaComponente'
+
 function App() {
   return (
     <div className="App">
@@ -11,7 +13,7 @@ function App() {
         <Route path="/" component={Nav} />
         <Route exact path="/" component={Home} />
         <Route exact path="/direccion" component={Direccion} />
-    
+        <Route exact path="/direccion/:id/:nombre" component={PruebaComponente}/>
       </Router>
     </div>
   );

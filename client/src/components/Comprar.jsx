@@ -8,6 +8,7 @@ export default function Comprar({ productos, data }){
   //const attr_nonce = document.createAttribute('nonce')
 
   attr_data_preference.value = data.id
+  
   //attr_nonce.value = 'abcdefg'
   script.src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
   script.setAttributeNode(attr_data_preference)

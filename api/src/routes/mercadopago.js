@@ -2,6 +2,7 @@ const { Order_detail , Order} = require('../db.js');
 
 const {
     PROD_ACCESS_TOKEN,
+    Application_ID,
   } = process.env;
 
 const BASE_URL = process.env.NODE_BASE_URL ? process.env.NODE_BASE_URL : 'http://localhost:3000' 
@@ -42,7 +43,13 @@ mercadopago.configure({
       success: `${BASE_BACK}/mercadopago/pagos`,
       failure: `${BASE_BACK}/mercadopago/pagos`,
       pending: `${BASE_BACK}/mercadopago/pagos`,
-    }
+    },
+    //marketplace: Application_ID,
+   /* marketplace_fee: 2.56,
+    payer: {
+      id: 699750543,
+      nickname: "TESTR7BARI7Y"
+    }*/
   };
   console.info('preference:', preference)
   mercadopago.preferences.create(preference)
